@@ -12,5 +12,7 @@ urlpatterns = [
     path('sfida/',views.sfida),
     path('rendered/',views.rendered_view),
     path('sfida1/<str:text>',views.sfida_rendered_view,name='sfida-1'),
-    path('sfida1/', views.faqa_kryesore_sfides)
+    path('sfida1/', views.faqa_kryesore_sfides),
+    path('sfidadb/', views.sfida_db),
+    path('sfidadbMuaji/<str:emri>', views.sfidadb_mauji),
 ]

@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound,HttpResponseRedirect
 ## Revers perdoret per te ber redirect ne nje faqe tjeter
 from django.urls import reverse
 import math as m
+from .models import Muaji
 
 def sqrt_url(request,int):
     if int == 404:
@@ -91,3 +92,12 @@ def faqa_kryesore_sfides(request):
     muajt = list(muaji.keys())
     return render(request, 'html/faqa_pare.html', {'muajt':muajt})
     
+
+def sfida_db(request):
+    muajt = Muaji.objects.all()
+    return render(request, 'html/faqa_pare.html', {'muajt':muajt})
+
+def sfidadb_mauji(request,emri):
+    muaji = get_object_or_404(Muaji,mauji=emri)
+    return render(request, 'html/sfida.html', {'mauji': muaji.mauji,
+                                               'text':muaji.sfida})
